@@ -13,11 +13,11 @@ $total_space = disk_total_space(checkOS());
 $free_space = disk_free_space(checkOS());
 
 $space = round(($free_space * 100) / $total_space, 2);
-
+var_dump(floor($space) < MIN_SPACE);
 if ($mode = 1) {
     slack('Free space on disk: ' . $space . '%');
 } else {
-    if ($space < MIN_SPACE){
+    if (floor($space) < MIN_SPACE){
         slack('Warning! Free space on disk: ' . $space . '%');
     }
 }
