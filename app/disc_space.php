@@ -13,7 +13,7 @@ $total_space = disk_total_space(checkOS());
 $free_space = disk_free_space(checkOS());
 
 $space = round(($free_space * 100) / $total_space, 2);
-var_dump(PHP_OS);
+
 if ($mode = 1) {
     slack('Free space on disk: ' . $space . '%');
 } else {
