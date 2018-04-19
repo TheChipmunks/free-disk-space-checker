@@ -1,7 +1,7 @@
 <?php
 
-require_once('./../config.php');
-require_once('./functions.php');
+include __DIR__.'./../config.php';
+include __DIR__.'./functions.php';
 
 if (defined('STDIN') && isset($argv[1]) && $argv != '' && in_array($argv[1], MODES)) {
     $mode = $argv[1];
@@ -14,7 +14,7 @@ $free_space = disk_free_space(checkOS());
 
 $space = round(($free_space * 100) / $total_space, 2);
 
-if ($mode = 1) {
+if ($mode == 1) {
     slack('Free space on disk: ' . $space . '%');
 } else {
     if (floor($space) < MIN_SPACE){
