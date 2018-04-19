@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . './config.php';
+include __DIR__ . '/config.php';
 include __DIR__ . '/functions.php';
 
 if (defined('STDIN') && isset($argv[1]) && $argv != '' && in_array($argv[1], MODES)) {
