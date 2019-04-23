@@ -16,8 +16,8 @@ $space = round(($free_space * 100) / $total_space, 2);
 
 if ($mode == 1) {
     slack('Free space on disk: ' . $space . '%');
-} else {
-    if (floor($space) < MIN_SPACE) {
-        slack('Warning! Free space on disk: ' . $space . '%');
-    }
+} elseif (floor($space) <= MIN_SPACE && !notificationRead()) {
+    slack('Warning! Free space on disk: ' . $space . "%\r\nI read: http://" . $_SERVER['SERVER_NAME'] . '/notification_read.php');
+} elseif (floor($space) > MIN_SPACE) {
+    notificationRead(false);
 }
